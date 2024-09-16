@@ -1,5 +1,5 @@
 # Peck
-I've been working on bring support for [ParadeDB](https://www.paradedb.com/) to Ecto over the past few weeks, which I think suits this prompt rather nicely.
+I've been working on bringing support for [ParadeDB](https://www.paradedb.com/) to Ecto over the past few weeks, which I think suits this prompt rather nicely.
 
 ParadeDB is a set of Postgres extensions that allows developers to perform search and analytical workloads without the need of external services like ElasticSearch or ClickHouse. I've been working on bringing support for ParadeDB's search queries to Ecto, which I'd like to demonstrate.
 
