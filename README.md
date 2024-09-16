@@ -35,13 +35,14 @@ With this second query, I've added a `select:` expression to demonstrate that th
 There's more I'd like to show, but I'll have to keep this brief for the sake of time.
 * Because ParadeDB utilizes Tantivy under the hood, it scales especially well with complex queries and large amounts of data. The query times are also optimized for fast retrieval, such as as-you-type completions.
 
-* With traditional search engines, care must be taken to `JOIN` and load all the data te search engine should return in development. With this solution, a query like this would be more than possible (assuming we had a table of police districts):
+* With traditional search engines, care must be taken to `JOIN` and load all the data the search engine should return, during development. Alternatively, the search engine would return a list of IDs which would then need to be "hydrated" in the database. With this solution, a query like this would be more than possible (assuming we had a table of police districts):
   ```elixir
   from(
     f in FoodTruck,
     search: parse(f, "food_items:coffee AND food_items:donuts"),
     join: pd in assoc(f, :police_district),
-    preload: [police_district: pd]
+    preload: [police_district: pd],
+    order_by: [desc: pd.name]
   )
   ```
 
